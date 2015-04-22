@@ -54,7 +54,7 @@ namespace OrphanCharacters
             ServerApi.Hooks.ServerLeave.Register(this, OnLeave);
             TShockAPI.Hooks.PlayerHooks.PlayerPostLogin += OnLogin;
 
-            Commands.ChatCommands.Add(new Command("OrphanCharacters.allow", CommandGUI, "OrphanCharacters"));
+            Commands.ChatCommands.Add(new Command("OrphanCharacters.allow", CommandGUI, "orphancharacters"));
             Commands.ChatCommands.Add(new Command("OrphanCharacters.allow", CommandGUI, "orphans"));
             CommandArgs c = new CommandArgs("main", null, null);
 
