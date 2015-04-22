@@ -58,19 +58,6 @@ namespace OrphanCharacters
             Commands.ChatCommands.Add(new Command("OrphanCharacters.allow", CommandGUI, "orphans"));
             CommandArgs c = new CommandArgs("main", null, null);
 
-            bool GUI = false;
-            for (int i = 0; i < Environment.GetCommandLineArgs().Length; i++)
-            {
-                switch (Environment.GetCommandLineArgs()[i])
-                {
-                    case "-GUI":
-                        GUI = true;
-                        break;
-                }
-            }
-            if (GUI)
-                CommandGUI(c);
-
         }
 
         protected override void Dispose(bool disposing)

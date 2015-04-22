@@ -44,7 +44,7 @@ namespace OrphanCharacters
             dataOrphans.Rows.Clear();
             try
             {
-                sql = "SELECT * FROM tsCharacter ts where ts.account not in (select account from Users) order by Account";
+                sql = "SELECT * FROM tsCharacter ts where ts.account not in (select id from Users) order by Account";
                 using (var reader = TShock.DB.QueryReader(sql))
                 {
                     while (reader.Read())
