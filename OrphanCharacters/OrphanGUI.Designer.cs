@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.dataOrphans = new System.Windows.Forms.DataGridView();
+            this.gridSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gridAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridInventroy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblServerName = new System.Windows.Forms.Label();
             this.DeleteOrphans = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.refreshOrphans = new System.Windows.Forms.Button();
-            this.gridSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gridAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridInventroy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.selectAll = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.youOweMe = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataOrphans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +60,26 @@
             this.dataOrphans.Size = new System.Drawing.Size(902, 408);
             this.dataOrphans.TabIndex = 0;
             this.dataOrphans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOrphan_CellContentClick);
+            // 
+            // gridSelect
+            // 
+            this.gridSelect.HeaderText = "Delete?";
+            this.gridSelect.Name = "gridSelect";
+            this.gridSelect.Width = 80;
+            // 
+            // gridAccount
+            // 
+            this.gridAccount.HeaderText = "Account";
+            this.gridAccount.Name = "gridAccount";
+            this.gridAccount.ReadOnly = true;
+            this.gridAccount.Width = 75;
+            // 
+            // gridInventroy
+            // 
+            this.gridInventroy.HeaderText = "Inventory";
+            this.gridInventroy.Name = "gridInventroy";
+            this.gridInventroy.ReadOnly = true;
+            this.gridInventroy.Width = 700;
             // 
             // lblServerName
             // 
@@ -99,26 +120,6 @@
             this.refreshOrphans.UseVisualStyleBackColor = true;
             this.refreshOrphans.Click += new System.EventHandler(this.refreshOrphans_Click);
             // 
-            // gridSelect
-            // 
-            this.gridSelect.HeaderText = "Delete?";
-            this.gridSelect.Name = "gridSelect";
-            this.gridSelect.Width = 80;
-            // 
-            // gridAccount
-            // 
-            this.gridAccount.HeaderText = "Account";
-            this.gridAccount.Name = "gridAccount";
-            this.gridAccount.ReadOnly = true;
-            this.gridAccount.Width = 75;
-            // 
-            // gridInventroy
-            // 
-            this.gridInventroy.HeaderText = "Inventory";
-            this.gridInventroy.Name = "gridInventroy";
-            this.gridInventroy.ReadOnly = true;
-            this.gridInventroy.Width = 700;
-            // 
             // selectAll
             // 
             this.selectAll.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -139,12 +140,21 @@
             this.lblVersion.TabIndex = 266;
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // youOweMe
+            // 
+            this.youOweMe.Location = new System.Drawing.Point(268, 110);
+            this.youOweMe.Name = "youOweMe";
+            this.youOweMe.Size = new System.Drawing.Size(323, 23);
+            this.youOweMe.TabIndex = 267;
+            this.youOweMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // OrphanGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(926, 587);
+            this.Controls.Add(this.youOweMe);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.selectAll);
             this.Controls.Add(this.DeleteOrphans);
@@ -172,5 +182,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gridInventroy;
         private System.Windows.Forms.Button selectAll;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label youOweMe;
     }
 }

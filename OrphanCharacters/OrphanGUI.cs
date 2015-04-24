@@ -63,16 +63,23 @@ namespace OrphanCharacters
         private void DeleteOrphans_Click(object sender, EventArgs e)
         {
             bool anyDeleted = false;
+            int deleted = 0; 
             foreach (DataGridViewRow row in dataOrphans.Rows)
             {
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
                     deleteOrphan(row.Cells[1].Value.ToString());
                     anyDeleted = true;
+                    deleted++;
                 }
             }
-            if(anyDeleted)
+            if (anyDeleted)
+            {
+                double oweMe = deleted * .001;
+                youOweMe.Text = String.Format("You owe me {0:C} for {1} deletions", oweMe, deleted);
+
                 FindOrphans();
+            }
         }
         private void refreshOrphans_Click(object sender, EventArgs e)
         {
@@ -86,14 +93,13 @@ namespace OrphanCharacters
             {
                 sql = "DELETE FROM tsCharacter where Account =" + account;
                 TShock.Log.ConsoleInfo("Orphan pruned account " + account);
-
                 var reader = TShock.DB.Query(sql);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return;
+             return;
         }
         private void dataOrphan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

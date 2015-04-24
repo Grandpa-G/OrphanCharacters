@@ -83,6 +83,9 @@ namespace OrphanCharacters
 
         private void CommandGUI(CommandArgs args)
         {
+            if (args.Player.RealPlayer)
+                return;
+
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
 
