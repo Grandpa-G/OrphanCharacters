@@ -9,17 +9,13 @@ using System.Security.Permissions;
 
 using Terraria;
 using TShockAPI;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 using TerrariaApi.Server;
-using Newtonsoft.Json.Linq;
 using System.Threading;
 using System.IO;
 
 namespace OrphanCharacters
 {
-    [ApiVersion(1, 17)]
+    [ApiVersion(1, 19)]
     public class Orphans : TerrariaPlugin
     {
         Thread thread;
@@ -50,14 +46,9 @@ namespace OrphanCharacters
         }
         public override void Initialize()
         {
-            //            ServerApi.Hooks.NetGetData.Register(this, GetData);
-            ServerApi.Hooks.ServerLeave.Register(this, OnLeave);
-            TShockAPI.Hooks.PlayerHooks.PlayerPostLogin += OnLogin;
-
             Commands.ChatCommands.Add(new Command("OrphanCharacters.allow", CommandGUI, "orphancharacters"));
             Commands.ChatCommands.Add(new Command("OrphanCharacters.allow", CommandGUI, "orphans"));
             CommandArgs c = new CommandArgs("main", null, null);
-
         }
 
         protected override void Dispose(bool disposing)
@@ -67,18 +58,10 @@ namespace OrphanCharacters
 
             if (disposing)
             {
-                ServerApi.Hooks.ServerLeave.Deregister(this, OnLeave);
-                TShockAPI.Hooks.PlayerHooks.PlayerPostLogin -= OnLogin;
             }
             base.Dispose(disposing);
         }
-        private static void OnLeave(LeaveEventArgs args)
-        {
-        }
 
-        private void OnLogin(TShockAPI.Hooks.PlayerPostLoginEventArgs args)
-        {
-        }
         [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.ControlAppDomain)]
 
         private void CommandGUI(CommandArgs args)

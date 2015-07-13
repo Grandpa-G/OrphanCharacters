@@ -10,14 +10,9 @@ using System.Windows.Forms;
 using System.Reflection;
 
 using Terraria;
-using TShockAPI;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 using TerrariaApi.Server;
-using Newtonsoft.Json.Linq;
+using TShockAPI;
 using TShockAPI.DB;
-
 
 namespace OrphanCharacters
 {
@@ -28,7 +23,7 @@ namespace OrphanCharacters
             InitializeComponent();
 
             lblVersion.Text = "Version " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            lblServerName.Text = Terraria.Netplay.serverListenIP.ToString() + ":" + TShock.Config.ServerPort;
+            lblServerName.Text = Terraria.Netplay.ServerIP.ToString() + ":" + TShock.Config.ServerPort;
             lblVersion.Text = lblVersion.Text + " using " + TShock.Config.StorageType + " " + TShock.Config.MySqlDbName + " " + TShock.Config.MySqlHost;
 
             FindOrphans();
@@ -42,6 +37,7 @@ namespace OrphanCharacters
         {
             String sql;
             dataOrphans.Rows.Clear();
+            youOweMe.Text = "";
             try
             {
                 sql = "SELECT * FROM tsCharacter ts where ts.account not in (select id from Users) order by Account";
